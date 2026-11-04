@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>722</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>海测工具箱 -- by Mr. Wan</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <item>
+     <layout class="QGridLayout" name="gridLayout" rowstretch="1,1">
+      <item row="0" column="0">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="font">
+         <font>
+          <family>Adwaita Sans</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>水准工具</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_leveling_record_and_check">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>水准测量
+记录/检查工具</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="font">
+         <font>
+          <family>Adwaita Sans</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>xtf工具</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_xtf_to_dxf_track_line">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>从xtf导出dxf航迹</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_xtf_to_recording">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>从xtf导出外业
+数据采集记录表</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="font">
+         <font>
+          <family>Adwaita Sans</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>CARIS工具</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="rightMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,0,0,0">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_caris_time_converter">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>CARIS时间
+转换工具</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_hvf_editor">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>hvf辅助编辑工具</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_hvf_editor_2">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>追加至潮位文件(tid)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_hvf_editor_3">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>追加至声速文件(svp)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="font">
+         <font>
+          <family>Adwaita Sans</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>MISC</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_water_level_record">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>水位观察记录</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>README</string>
+    </property>
+    <addaction name="action_about_this_app"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_about_this_app">
+   <property name="text">
+    <string>关于工具的说明</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

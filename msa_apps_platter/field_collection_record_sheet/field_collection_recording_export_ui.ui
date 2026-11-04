@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>828</width>
+    <height>264</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>外业采集记录表生成器  -- by Mr. Wan</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_start_analysis">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>180</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+   </property>
+   <property name="text">
+    <string>分析数据并执行</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>741</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>XTF文件夹所在位置：</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="pushButton_browser_to_xtf_folder">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+      </property>
+      <property name="text">
+       <string>浏览</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_xtf_location">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>将excel输出至文件夹：</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="pushButton_browser_to_excel_folder">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+      </property>
+      <property name="text">
+       <string>浏览</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_excel_location">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
