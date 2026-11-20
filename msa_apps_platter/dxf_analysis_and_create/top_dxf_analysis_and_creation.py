@@ -56,7 +56,7 @@ class SubWindowDxfRW(QWidget, Ui_Form):
             self.lineEdit_output_path_gp1.setText(self.output_path_gp1)
 
     def start_output_pg1(self):
-        # file_path = self.lineEdit_dxf_path_gp1.text()
+        file_name = self.lineEdit_dxf_path_gp1.text().split('/')[-1].split('\\')[-1].split('.')[0]
         # target_path = self.lineEdit_output_path_gp1.text()
 
         doc, auditor = recover.readfile(self.lineEdit_dxf_path_gp1.text())
@@ -109,13 +109,13 @@ class SubWindowDxfRW(QWidget, Ui_Form):
                         point_nu += 1
                     lines.append("\n")
                     line_nu += 1
-            f = open(self.lineEdit_output_path_gp1.text() + '/dxf_line_report.txt', "w")
+            f = open(self.lineEdit_output_path_gp1.text() + '/' + file_name + '.txt', "w")
             f.writelines(lines)
             f.close()
             QMessageBox.information(
                 None,
                 "提取完成",
-                f"提取完成！\n一共提取到 {line_nu - 1} 条独立折线\n统计报告已经存储在" + self.output_path_gp1 + '/dxf_line_report.txt中.')
+                f"提取完成！\n一共提取到 {line_nu - 1} 条独立折线\n统计报告已经存储在" + self.output_path_gp1 + file_name + '.txt中.')
         else:
             for idx, item in enumerate(polyline_list, start=1):
                 if item["layer"] == self.lineEdit_target_layer_gp1.text():
@@ -134,7 +134,7 @@ class SubWindowDxfRW(QWidget, Ui_Form):
             QMessageBox.information(
                 None,
                 "提取完成",
-                f"转换完成！\n一共提取到 {line_nu - 1} 条独立折线\n结果已经存储到" + self.output_path_gp1 + '/dxf_points_report.csv中')
+                f"转换完成！\n一共提取到 {line_nu - 1} 条独立折线\n结果已经存储到" + self.output_path_gp1 + '/' + file_name + '.csv中')
 
 
     def browser_to_csv_gp2(self):
