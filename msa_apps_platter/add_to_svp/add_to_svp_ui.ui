@@ -43,7 +43,7 @@ QPushButton:pressed {
 }</string>
          </property>
          <property name="text">
-          <string>将新潮位文件</string>
+          <string>将新声速文件</string>
          </property>
         </widget>
        </item>

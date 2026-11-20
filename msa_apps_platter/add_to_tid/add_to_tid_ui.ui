@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>674</width>
-    <height>315</height>
+    <width>715</width>
+    <height>422</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,10,2">
        <item>
         <widget class="QLabel" name="label">
          <property name="font">
@@ -48,7 +48,7 @@ QPushButton:pressed {
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="lineEdit_new_tid_file_path">
          <property name="font">
           <font>
            <pointsize>16</pointsize>
@@ -57,7 +57,7 @@ QPushButton:pressed {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButton_browser_to_new_tid">
          <property name="font">
           <font>
            <pointsize>16</pointsize>
@@ -88,7 +88,7 @@ QPushButton:pressed {
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,10,2">
        <item>
         <widget class="QLabel" name="label_2">
          <property name="font">
@@ -119,7 +119,7 @@ QPushButton:pressed {
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="lineEdit_local_tid_file_path">
          <property name="font">
           <font>
            <pointsize>16</pointsize>
@@ -128,7 +128,7 @@ QPushButton:pressed {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pushButton_browser_to_old_tid">
          <property name="font">
           <font>
            <pointsize>16</pointsize>
@@ -170,9 +170,41 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="title">
-        <string>配置</string>
+        <string>矫正配置</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+          </property>
+          <property name="text">
+           <string>添加的潮位值 = K x 原潮位 + C</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
@@ -200,12 +232,12 @@ QPushButton:pressed {
 }</string>
             </property>
             <property name="text">
-             <string>改正数</string>
+             <string>K值：</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_3"/>
+           <widget class="QLineEdit" name="lineEdit_k_value"/>
           </item>
          </layout>
         </item>
@@ -236,12 +268,12 @@ QPushButton:pressed {
 }</string>
             </property>
             <property name="text">
-             <string>归算至</string>
+             <string>C值：</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_4"/>
+           <widget class="QLineEdit" name="lineEdit_C_value"/>
           </item>
          </layout>
         </item>
@@ -249,7 +281,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="pushButton_start_add">
        <property name="font">
         <font>
          <pointsize>16</pointsize>

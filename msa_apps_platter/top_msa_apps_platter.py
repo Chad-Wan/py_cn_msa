@@ -6,7 +6,7 @@ from msa_apps_platter import Ui_MainWindow
 from hvf_editor.top_hvf_editor import SubWindowHvfEditor
 from field_collection_record_sheet.top_field_collection_recording_sheet_export import FC_RecordWindow
 from caris_time_converter.top_caris_time_converter import SubWindowTimeConverter
-
+from dxf_analysis_and_create.top_dxf_analysis_and_creation import SubWindowDxfRW
 
 class TopWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -16,6 +16,7 @@ class TopWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_hvf_editor.clicked.connect(self.show_hvf_editor)
         self.pushButton_xtf_to_recording.clicked.connect(self.show_xtf_to_recording)
         self.pushButton_caris_time_converter.clicked.connect(self.show_caris_time_converter)
+        self.pushButton_dxf_ana_and_gen.clicked.connect(self.show_dxf_ana_and_gen)
 
         self.action_about_this_app.triggered.connect(self.show_about_this_app)
 
@@ -31,6 +32,10 @@ class TopWindow(QMainWindow, Ui_MainWindow):
     def show_caris_time_converter(self):
         self.sub_window_3 = SubWindowTimeConverter()
         self.sub_window_3.show()
+
+    def show_dxf_ana_and_gen(self):
+        self.sub_window_4 = SubWindowDxfRW()
+        self.sub_window_4.show()
 
     def show_about_this_app(self):
         text = "Version 1.0\n\nHi,\n如果你知道我在哪，发现任何问题或者有什么疑问，可以直接来喊我。。\nEmail也行：wanchao9999@outlook.com\n工具只是辅助，人才是灵魂。\n祝好"

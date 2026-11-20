@@ -194,6 +194,46 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.pushButton_hvf_editor)
 
+        self.pushButton_hvf_editor_2 = QPushButton(self.groupBox_2)
+        self.pushButton_hvf_editor_2.setObjectName(u"pushButton_hvf_editor_2")
+        self.pushButton_hvf_editor_2.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(220,220,220);\n"
+"    color: #222222;\n"
+"    border: 1px solid rgb(140,140,140);\n"
+"    padding: 4px;\n"
+"    border-radius: 4px;  /* \u5706\u89d2\uff0c0=\u76f4\u89d2 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(230,230,230);\n"
+"    border:1px solid rgb(100,100,100); /* hover\u65f6\u8fb9\u6846\u53d8\u6df1 */\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(200,200,200);\n"
+"    border:1px solid rgb(70,70,70);\n"
+"}")
+
+        self.verticalLayout.addWidget(self.pushButton_hvf_editor_2)
+
+        self.pushButton_hvf_editor_3 = QPushButton(self.groupBox_2)
+        self.pushButton_hvf_editor_3.setObjectName(u"pushButton_hvf_editor_3")
+        self.pushButton_hvf_editor_3.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(220,220,220);\n"
+"    color: #222222;\n"
+"    border: 1px solid rgb(140,140,140);\n"
+"    padding: 4px;\n"
+"    border-radius: 4px;  /* \u5706\u89d2\uff0c0=\u76f4\u89d2 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(230,230,230);\n"
+"    border:1px solid rgb(100,100,100); /* hover\u65f6\u8fb9\u6846\u53d8\u6df1 */\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(200,200,200);\n"
+"    border:1px solid rgb(70,70,70);\n"
+"}")
+
+        self.verticalLayout.addWidget(self.pushButton_hvf_editor_3)
+
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
@@ -246,6 +286,46 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox_4, 1, 0, 1, 1)
 
+        self.groupBox_5 = QGroupBox(self.centralwidget)
+        self.groupBox_5.setObjectName(u"groupBox_5")
+        self.groupBox_5.setFont(font1)
+        self.groupBox_5.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.horizontalLayout_7 = QHBoxLayout(self.groupBox_5)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setSpacing(10)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(10, -1, 10, -1)
+        self.pushButton_dxf_ana_and_gen = QPushButton(self.groupBox_5)
+        self.pushButton_dxf_ana_and_gen.setObjectName(u"pushButton_dxf_ana_and_gen")
+        self.pushButton_dxf_ana_and_gen.setEnabled(True)
+        self.pushButton_dxf_ana_and_gen.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(220,220,220);\n"
+"    border: 1px solid rgb(140,140,140);\n"
+"    padding: 4px;\n"
+"    border-radius: 4px;  /* \u5706\u89d2\uff0c0=\u76f4\u89d2 */\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(230,230,230);\n"
+"    border:1px solid rgb(100,100,100); /* hover\u65f6\u8fb9\u6846\u53d8\u6df1 */\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(200,200,200);\n"
+"    border:1px solid rgb(70,70,70);\n"
+"}")
+
+        self.verticalLayout_5.addWidget(self.pushButton_dxf_ana_and_gen)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_5.addItem(self.verticalSpacer_5)
+
+
+        self.horizontalLayout_7.addLayout(self.verticalLayout_5)
+
+
+        self.gridLayout.addWidget(self.groupBox_5, 1, 1, 1, 1)
+
         self.gridLayout.setRowStretch(0, 1)
         self.gridLayout.setRowStretch(1, 1)
 
@@ -284,8 +364,12 @@ class Ui_MainWindow(object):
         self.pushButton_caris_time_converter.setText(QCoreApplication.translate("MainWindow", u"CARIS\u65f6\u95f4\n"
 "\u8f6c\u6362\u5de5\u5177", None))
         self.pushButton_hvf_editor.setText(QCoreApplication.translate("MainWindow", u"hvf\u8f85\u52a9\u7f16\u8f91\u5de5\u5177", None))
+        self.pushButton_hvf_editor_2.setText(QCoreApplication.translate("MainWindow", u"\u8ffd\u52a0\u81f3\u6f6e\u4f4d\u6587\u4ef6(tid)", None))
+        self.pushButton_hvf_editor_3.setText(QCoreApplication.translate("MainWindow", u"\u8ffd\u52a0\u81f3\u58f0\u901f\u6587\u4ef6(svp)", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"MISC", None))
         self.pushButton_water_level_record.setText(QCoreApplication.translate("MainWindow", u"\u6c34\u4f4d\u89c2\u5bdf\u8bb0\u5f55", None))
+        self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"CAD", None))
+        self.pushButton_dxf_ana_and_gen.setText(QCoreApplication.translate("MainWindow", u"dxf\u5bfc\u51fa\u67d0\u56fe\u5c42\u6298\u7ebf", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"README", None))
     # retranslateUi
 

@@ -409,6 +409,76 @@ QPushButton:pressed {
         </layout>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="font">
+         <font>
+          <family>Adwaita Sans</family>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string>CAD</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="pushButton_dxf_ana_and_gen">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+             </property>
+             <property name="text">
+              <string>dxf导出某图层折线</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>

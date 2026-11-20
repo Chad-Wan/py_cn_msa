@@ -1,6 +1,7 @@
 import os
 import subprocess
 import platform
+from PySide6.QtWidgets import QFileDialog, QMessageBox
 
 # 函数功能：查找当前文件夹中，文件名包含<pattern>的文件
 # 如果当前文件夹中包含目录，则返回所有的目录名字
@@ -93,10 +94,51 @@ def recreate_all_ui_classes(root_path: str):
             else:
                 print(ui_name.replace('.ui', '.py') + " generation failed")
 
+def browser_to_file(file_format: str):
+    file_path, filter_str = QFileDialog.getOpenFileName(
+        parent=None,
+        caption="请选择数据文件",
+        dir=".",
+        filter="{} File(*.{});;All Files (*.*)".format(file_format, file_format)
+    )
+    if file_path and os.path.isfile(file_path):
+        return file_path
+    else:
+        QMessageBox.information(
+            None,
+            "错误",
+            f"选择的目标路径非法！")
+        return None
 
 
+def browser_to_folder():
+    folder_path = QFileDialog.getExistingDirectory(
+        parent=None,
+        caption="选择文件夹",
+        dir=".")
+    if folder_path and os.path.isdir(folder_path):
+        return folder_path
+    else:
+        QMessageBox.information(
+            None,
+            "错误",
+            f"选择的目标路径非法！")
+        return None
 
+def str2float(s: str):
+    try:
+        return float(s)
+    except ValueError:
+        return s
 
+def float2str(f: float):
+    return str(f)
+
+def read_file(file_path: str):
+    f = open(file_path, "r")
+    lines = f.readlines()
+    f.close()
+    return lines
 
 # print(find_all_subfiles_with_certain_patterns("..", ".ui"))
 # recreate_all_ui_classes("..")

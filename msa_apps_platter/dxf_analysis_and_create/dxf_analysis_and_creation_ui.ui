@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>739</width>
+    <height>508</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>dxf analysis and creation</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>将dxf某层中的折线导出（包含每条线的起点，折点，终点）</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>导出格式：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="comboBox_output_format_gp1">
+        <property name="currentText">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>请选择导出格式</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="pushButton_browser_to_dxf_gp1">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+        </property>
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_dxf_path_gp1">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_output_path_gp1">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>输出路径：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_target_layer_gp1">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="pushButton_browser_to_output_path_gp1">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+        </property>
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>目标图层：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>源dxf文件路径：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="pushButton_start_output_pg1">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+        </property>
+        <property name="text">
+         <string>开始导出</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>根据已知点坐标和标号，生成一个dxf文件</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>输出路径：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_target_layer_gp2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>已知点csv文件路径：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="pushButton_browser_to_output_path_gp2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+        </property>
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QPushButton" name="pushButton_start_output_gp2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+        </property>
+        <property name="text">
+         <string>开始导出</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_csv_path_gp2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>目标图层：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEdit_output_path_gp2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="pushButton_browser_to_csv_gp2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(220,220,220);
+    color: #222222;
+    border: 1px solid rgb(140,140,140);
+    padding: 4px;
+    border-radius: 4px;  /* 圆角，0=直角 */
+}
+QPushButton:hover {
+    background-color: rgb(230,230,230);
+    border:1px solid rgb(100,100,100); /* hover时边框变深 */
+}
+QPushButton:pressed {
+    background-color: rgb(200,200,200);
+    border:1px solid rgb(70,70,70);
+}</string>
+        </property>
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="label_7">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Note: 已知点坐标导入格式请参照上模块一生成的cvs文件（每行格式为：标号 x坐标 y坐标）</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="comboBox_remove_duplication_gp2">
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>是否去除重复点？</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

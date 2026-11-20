@@ -89,33 +89,54 @@ def generate_one_hvf_item_depth(date_time: str, X: str, Y: str, Z: str, pitch: s
     }
     return new_item
 
-def generate_one_hvf_item_svp(date_time: str, X: str, Y: str, Z: str, pitch: str, roll: str, yaw: str,
+def generate_one_hvf_item_svp(date_time: str, DualHead: str, X: str, Y: str, Z: str, pitch: str, roll: str, yaw: str,
                                X2='0.0', Y2='0.0', Z2='0.0', pitch2='0.0', roll2='0.0', yaw2='0.0'):
-    new_item = {
-        '@value': date_time,
-        'Latency': {
-            '@value': '0.000000'
-        },
-        'DualHead': {
-            '@value': 'Yes'
-        },
-        'Offsets': {
-            '@X': X,
-            '@Y': Y,
-            '@Z': Z,
-            '@X2': X2,
-            '@Y2': Y2,
-            '@Z2': Z2
-        },
-        'MountAngle': {
-            '@Pitch': pitch,
-            '@Roll': roll,
-            '@Azimuth': yaw,
-            '@Pitch2': pitch2,
-            '@Roll2': roll2,
-            '@Azimuth2': yaw2
+    if DualHead == "Yes":
+        new_item = {
+            '@value': date_time,
+            'Latency': {
+                '@value': '0.000000'
+            },
+            'DualHead': {
+                '@value': 'Yes'
+            },
+            'Offsets': {
+                '@X': X,
+                '@Y': Y,
+                '@Z': Z,
+                '@X2': X2,
+                '@Y2': Y2,
+                '@Z2': Z2
+            },
+            'MountAngle': {
+                '@Pitch': pitch,
+                '@Roll': roll,
+                '@Azimuth': yaw,
+                '@Pitch2': pitch2,
+                '@Roll2': roll2,
+                '@Azimuth2': yaw2
+            }
         }
-    }
+    else:
+        new_item = {
+            '@value': date_time,
+            'Latency': {
+                '@value': '0.000000'
+            },
+            'DualHead': {
+                '@value': 'No'
+            },
+            'Offsets': {
+                '@X': X,
+                '@Y': Y,
+                '@Z': Z
+            },
+            'MountAngle': {
+                '@Pitch': pitch,
+                '@Roll': roll,
+                '@Azimuth': yaw
+            }
+        }
 
     return new_item
 
@@ -126,7 +147,7 @@ def get_score(item):
 def read_interested_hvf_items_svp_sensor(data: dict):
     set_list = []
     for item in data['HIPSVesselConfig']['SVPSensor']['TimeStamp']:
-        print(item)
+        # print(item)
         date_time = item['@value']
         dual_head = item['DualHead']['@value']
         X = item['Offsets']['@X']
@@ -404,6 +425,7 @@ def reorder_the_hvf_existing_settings_svp_sensor(hvf_file_path:str, xtf_datafram
     # print(xtf_dataframe.loc[:,["file_name", 'threshold_time']])
 
     xtf_dataframe['matched_setting_number'] = 99
+    xtf_dataframe['DualHead'] = "Yes"
     temp = 0
 
     count = 0
@@ -434,6 +456,9 @@ def reorder_the_hvf_existing_settings_svp_sensor(hvf_file_path:str, xtf_datafram
 
     # 对于已经有的配置，逐条归档到xtf dataframe里面
     for i in range(len(xtf_dataframe)):
+        # print(set_list)
+        xtf_dataframe.loc[i, 'DualHead'] = set_list[xtf_dataframe.loc[i, "matched_setting_number"]]["dual_head"]
+
         xtf_dataframe.loc[i, 'X'] = set_list[xtf_dataframe.loc[i, "matched_setting_number"]]["X"]
         xtf_dataframe.loc[i, 'Y'] = set_list[xtf_dataframe.loc[i, "matched_setting_number"]]["Y"]
         xtf_dataframe.loc[i, 'Z'] = set_list[xtf_dataframe.loc[i, "matched_setting_number"]]["Z"]
@@ -452,14 +477,15 @@ def reorder_the_hvf_existing_settings_svp_sensor(hvf_file_path:str, xtf_datafram
 
     # print(set_list)
 
-    return xtf_dataframe.loc[:, ["file_name", "start_time", "end_time", 'X', 'Y', 'Z', 'pitch', 'roll', 'yaw', 'direction', 'X2', 'Y2', 'Z2', 'pitch2', 'roll2', 'yaw2', 'direction']]
+    return xtf_dataframe.loc[:, ["file_name", "start_time", "end_time", 'DualHead', 'X', 'Y', 'Z', 'pitch', 'roll', 'yaw', 'X2', 'Y2', 'Z2', 'pitch2', 'roll2', 'yaw2', 'direction']]
 
 
 def reorder_the_hvf_existing_settings(hvf_file_path: str, xtf_file_folder_path: str):
-    xtf_dataframe = get_test_line_info_from_xtf_files(xtf_file_folder_path)
+    xtf_dataframe_depth = get_test_line_info_from_xtf_files(xtf_file_folder_path)
+    xtf_dataframe_svp = xtf_dataframe_depth.copy()
 
-    depth_dataframe = reorder_the_hvf_existing_settings_transducer(hvf_file_path, xtf_dataframe)
-    svp_dataframe = reorder_the_hvf_existing_settings_svp_sensor(hvf_file_path, xtf_dataframe)
+    depth_dataframe = reorder_the_hvf_existing_settings_transducer(hvf_file_path, xtf_dataframe_depth)
+    svp_dataframe = reorder_the_hvf_existing_settings_svp_sensor(hvf_file_path, xtf_dataframe_svp)
 
     return depth_dataframe, svp_dataframe
 
@@ -467,11 +493,11 @@ def reorder_the_hvf_existing_settings(hvf_file_path: str, xtf_file_folder_path: 
 # print(date_to_doy(2026, 10, 8))
 
 
-# #
-hvf_file_path = "C:/Users/DELL/Documents/BinZhou_port_data/caris_config_files/BinZhou.hvf"
-xtf_folder_path = "C:/Users/DELL/Documents/BinZhou_port_data/BinZhou_port_raw_data/1008/xtf"
-# xtf_folder_path = "C:/Users/DELL/Documents/BinZhou_port_data/BinZhou_port_raw_data/"
-data = read_hml(hvf_file_path)
+# # #
+# hvf_file_path = "/home/wan/data/hvf_file_demo/2026wxm.hvf"
+# xtf_folder_path = "/home/wan/data/BinZhou_Port_2026/Export_test"
+# xtf_folder_path = "/home/wan/data/BinZhou_Port_2026/Export"
+# data = read_hml(hvf_file_path)
 # # # print(read_interested_hvf_items(data))
 # # # print(len(read_interested_hvf_items(data)))
 # # # print(get_test_line_info_from_xtf_files(xtf_folder_path))
@@ -492,4 +518,13 @@ data = read_hml(hvf_file_path)
 
 # print(data['HIPSVesselConfig']['SVPSensor']['TimeStamp'][0])
 
-print(reorder_the_hvf_existing_settings(hvf_file_path, xtf_folder_path))
+# print(reorder_the_hvf_existing_settings(hvf_file_path, xtf_folder_path))
+#
+# depth_df, svp_df = reorder_the_hvf_existing_settings(hvf_file_path, xtf_folder_path)
+# print(depth_df.columns)
+# pd.set_option('display.max_rows', None)      # 显示全部行
+# pd.set_option('display.max_columns', None)   # 显示全部列
+# pd.set_option('display.width', None)         # 自动适配宽度，不折行截断
+# print(depth_df)
+# print(svp_df)
+# print(svp_df['DualHead'])

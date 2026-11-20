@@ -9,12 +9,56 @@ from common_func.hvf import generate_one_hvf_item_svp
 from common_func.hvf import read_hml, write_hml, str_datetime_to_str_doytime
 from datetime import datetime
 
+
+def angle_to_arrow(angle):
+    """把角度归一化到 0~360 后映射到箭头。
+    非 45° 倍数的角度会报错，方便发现脏数据。"""
+    ARROW_MAP = {
+        90: "→",
+        45: "↗",
+        0: "↑",
+        315: "↖",
+        270: "←",
+        225: "↙",
+        180: "↓",
+        135: "↘",
+    }
+    # 归一化：支持负数和超过 360 的值
+    a = round(float(angle)) % 360
+    if a not in ARROW_MAP:
+        raise ValueError(f"角度 {angle}° 不是 45° 的倍数")
+    return ARROW_MAP[a]
+
+
+def generate_new_approximate_angle(old_angle: float):
+    if old_angle < 22.5:
+        new_angle = 0
+    elif 22.5 <= old_angle < 67.5:
+        new_angle = 45
+    elif 67.5 <= old_angle < 112.5:
+        new_angle = 90
+    elif 112.5 <= old_angle < 157.5:
+        new_angle = 135
+    elif 157.5 <= old_angle < 202.5:
+        new_angle = 180
+    elif 202.5 <= old_angle < 247.5:
+        new_angle = 225
+    elif 247.5 <= old_angle < 292.5:
+        new_angle = 270
+    elif 292.5 <= old_angle < 337.5:
+        new_angle = 315
+    else:
+        new_angle = 0
+    return new_angle
+
+
 class SubWindowHvfEditor(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
 
-        self.df_xtf_config = pd.DataFrame({})
+        self.df_xtf_config_depth = pd.DataFrame({})
+        self.df_xtf_config_svp = pd.DataFrame({})
 
         self.pushButton_browser_to_hvf.clicked.connect(self.browser_to_file)
         self.pushButton_browser_to_xtf.clicked.connect(self.browser_to_xtf_folder)
@@ -44,56 +88,13 @@ class SubWindowHvfEditor(QWidget, Ui_Form):
             self.lineEdit_xtf_files_location_folder.setText(folder_path)
 
     def save_df_to_file(self, file_path: str):
-        self.df_xtf_config.to_pickle(file_path)
-
-    def generate_new_approximate_angle(self, old_angle: float):
-        if old_angle < 22.5:
-            new_angle = 0
-        elif 22.5 <= old_angle < 67.5:
-            new_angle = 45
-        elif 67.5 <= old_angle < 112.5:
-            new_angle = 90
-        elif 112.5 <= old_angle < 157.5:
-            new_angle = 135
-        elif 157.5 <= old_angle < 202.5:
-            new_angle = 180
-        elif 202.5 <= old_angle < 247.5:
-            new_angle = 225
-        elif 247.5 <= old_angle < 292.5:
-            new_angle = 270
-        elif 292.5 <= old_angle < 337.5:
-            new_angle = 315
-        else:
-            new_angle = 0
-        return new_angle
-
-
-    def angle_to_arrow(self, angle):
-        """把角度归一化到 0~360 后映射到箭头。
-        非 45° 倍数的角度会报错，方便发现脏数据。"""
-        ARROW_MAP = {
-            90: "→",
-            45: "↗",
-            0: "↑",
-            315: "↖",
-            270: "←",
-            225: "↙",
-            180: "↓",
-            135: "↘",
-        }
-        # 归一化：支持负数和超过 360 的值
-        a = round(float(angle)) % 360
-        if a not in ARROW_MAP:
-            raise ValueError(f"角度 {angle}° 不是 45° 的倍数")
-        return ARROW_MAP[a]
-
-
+        self.df_xtf_config_depth.to_pickle(file_path)
 
     def start_analysis(self):
         hvf_file_path = self.lineEdit_hvf_file_location.text()
         xtf_file_path = self.lineEdit_xtf_files_location_folder.text()
         self.pushButton_start_analysis.setEnabled(False)
-        self.df_xtf_config = reorder_the_hvf_existing_settings_transducer(hvf_file_path, xtf_file_path)
+        self.df_xtf_config_depth, self.df_xtf_config_svp = reorder_the_hvf_existing_settings_transducer(hvf_file_path, xtf_file_path)
         self.pushButton_start_analysis.setText("分析已经完成")
         self.generate_xtf_filelist()
         self.save_df_to_file(hvf_file_path + "_db")
@@ -104,35 +105,54 @@ class SubWindowHvfEditor(QWidget, Ui_Form):
 
     def generate_xtf_filelist(self):
         xtf_file_list = []
-        for i in range(len(self.df_xtf_config)):
-            xtf_file_list.append(self.df_xtf_config.loc[i, "file_name"])
+        for i in range(len(self.df_xtf_config_depth)):
+            xtf_file_list.append(self.df_xtf_config_depth.loc[i, "file_name"])
         self.comboBox_available_xtf_file_names.addItems(xtf_file_list)
 
     def read_data_from_xtf_dataframe(self, file_name: str, output_text=True):
         # 这个函数用来读取xtf dataframe中的单条信息，以文件名为索引，提取xyz和pitch,roll,yaw并返回
         # 参数output_test可以控制返回的值是文本形式还是实际数据类型形式
-        date_time_start = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "start_time"].values[0]
-        date_time_end = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "end_time"].values[0]
-        x = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "X"].values[0]
-        y = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "Y"].values[0]
-        z = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "Z"].values[0]
-        pitch = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "pitch"].values[0]
-        roll = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "roll"].values[0]
-        yaw = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "yaw"].values[0]
-        direction = self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "direction"].values[0]
+
+        # depth部分
+        date_time_start = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "start_time"].iloc[0]
+        date_time_end = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "end_time"].iloc[0]
+        x_depth = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "X"].iloc[0]
+        y_depth = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "Y"].iloc[0]
+        z_depth = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "Z"].iloc[0]
+        pitch_depth = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "pitch"].iloc[0]
+        roll_depth = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "roll"].iloc[0]
+        yaw_depth = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "yaw"].iloc[0]
+        direction = self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "direction"].iloc[0]
+
+        # svp部分
+        dual_head = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "DualHead"].iloc[0]
+
+        x_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "X"].iloc[0]
+        y_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "Y"].iloc[0]
+        z_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "Z"].iloc[0]
+        pitch_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "pitch"].iloc[0]
+        roll_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "roll"].iloc[0]
+        yaw_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "yaw"].iloc[0]
+
+        x2_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "X2"].iloc[0]
+        y2_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "Y2"].iloc[0]
+        z2_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "Z2"].iloc[0]
+        pitch2_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "pitch2"].iloc[0]
+        roll2_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "roll2"].iloc[0]
+        yaw2_svp = self.df_xtf_config_svp.loc[self.df_xtf_config_svp["file_name"] == file_name, "yaw2"].iloc[0]
 
         if output_text:
             date_time_start = str(date_time_start)
             date_time_end = str(date_time_end)
-            x = str(x)
-            y = str(y)
-            z = str(z)
-            pitch = str(pitch)
-            roll = str(roll)
-            yaw = str(yaw)
-            return date_time_start, date_time_end, x, y, z, pitch, roll, yaw, direction
+            x_depth = str(x_depth)
+            y_depth = str(y_depth)
+            z_depth = str(z_depth)
+            pitch_depth = str(pitch_depth)
+            roll_depth = str(roll_depth)
+            yaw_depth = str(yaw_depth)
+            return date_time_start, date_time_end, x_depth, y_depth, z_depth, pitch_depth, roll_depth, yaw_depth, direction
         else:
-            return date_time_start, date_time_end, x, y, z, pitch, roll, yaw, direction
+            return date_time_start, date_time_end, x_depth, y_depth, z_depth, pitch_depth, roll_depth, yaw_depth, direction
 
     def extract_xtf_file_info(self):
         # 将dataframe中的一条xtf相关配置读取出来，在lineEdit控件中显示出来
@@ -148,7 +168,7 @@ class SubWindowHvfEditor(QWidget, Ui_Form):
         self.lineEdit_picth.setText(pitch)
         self.lineEdit_roll.setText(roll)
         self.lineEdit_yaw.setText(yaw)
-        self.lineEdit_nav_direction.setText(str(int(direction)) + self.angle_to_arrow(self.generate_new_approximate_angle(direction)))
+        self.lineEdit_nav_direction.setText(str(int(direction)) + angle_to_arrow(generate_new_approximate_angle(direction)))
 
     def save_to_df(self):
         file_name = self.comboBox_available_xtf_file_names.currentText()
@@ -162,12 +182,12 @@ class SubWindowHvfEditor(QWidget, Ui_Form):
         roll = float(self.lineEdit_roll.text())
         yaw = float(self.lineEdit_yaw.text())
 
-        self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "X"] = x
-        self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "Y"] = y
-        self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "Z"] = z
-        self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "pitch"] = pitch
-        self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "roll"] = roll
-        self.df_xtf_config.loc[self.df_xtf_config["file_name"] == file_name, "yaw"] = yaw
+        self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "X"] = x
+        self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "Y"] = y
+        self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "Z"] = z
+        self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "pitch"] = pitch
+        self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "roll"] = roll
+        self.df_xtf_config_depth.loc[self.df_xtf_config_depth["file_name"] == file_name, "yaw"] = yaw
 
 
 
@@ -175,9 +195,9 @@ class SubWindowHvfEditor(QWidget, Ui_Form):
         # 将所有xtf文件自己的配置写入一个列表，每个列表元素都是事先定义好的字典。后期直接写入hvf配置文件
         # 这个列表的名字叫做new_configs
         new_configs = []
-        # print(self.df_xtf_config)
+        # print(self.df_xtf_config_depth)
         self.save_df_to_file(self.lineEdit_hvf_file_location.text() + "_db")
-        for xtf_file in self.df_xtf_config["file_name"]:
+        for xtf_file in self.df_xtf_config_depth["file_name"]:
             file_name = xtf_file
             # print(file_name)
             date_time_start, date_time_end, x, y, z, pitch, roll, yaw, nothing = (
@@ -210,7 +230,7 @@ class SubWindowHvfEditor(QWidget, Ui_Form):
 
     def read_df_database(self):
         try:
-            self.df_xtf_config = pd.read_pickle(self.lineEdit_hvf_file_location.text() + "_db")
+            self.df_xtf_config_depth = pd.read_pickle(self.lineEdit_hvf_file_location.text() + "_db")
             self.generate_xtf_filelist()
         except:
             QMessageBox.information(

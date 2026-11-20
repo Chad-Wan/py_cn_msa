@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'hvf_editor_ui.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.12.0
+## Created by: Qt User Interface Compiler version 6.11.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,10 +23,10 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(1014, 547)
+        Form.resize(1014, 851)
         self.layoutWidget = QWidget(Form)
         self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(20, 30, 971, 501))
+        self.layoutWidget.setGeometry(QRect(20, 30, 971, 798))
         self.verticalLayout_2 = QVBoxLayout(self.layoutWidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -212,118 +212,295 @@ class Ui_Form(object):
 
         self.verticalLayout.addLayout(self.gridLayout_2)
 
+        self.groupBox_4 = QGroupBox(self.groupBox_2)
+        self.groupBox_4.setObjectName(u"groupBox_4")
+        font2 = QFont()
+        font2.setFamilies([u"Adwaita Sans"])
+        font2.setPointSize(18)
+        self.groupBox_4.setFont(font2)
+        self.groupBox_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox_4)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.gridLayout_3 = QGridLayout()
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.lineEdit_y = QLineEdit(self.groupBox_2)
+        self.lineEdit_y = QLineEdit(self.groupBox_4)
         self.lineEdit_y.setObjectName(u"lineEdit_y")
 
         self.gridLayout_3.addWidget(self.lineEdit_y, 1, 3, 1, 1)
 
-        self.label = QLabel(self.groupBox_2)
+        self.label = QLabel(self.groupBox_4)
         self.label.setObjectName(u"label")
         self.label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
 
-        self.label_5 = QLabel(self.groupBox_2)
+        self.label_5 = QLabel(self.groupBox_4)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_5, 1, 0, 1, 1)
 
-        self.lineEdit_nav_direction = QLineEdit(self.groupBox_2)
+        self.lineEdit_nav_direction = QLineEdit(self.groupBox_4)
         self.lineEdit_nav_direction.setObjectName(u"lineEdit_nav_direction")
         self.lineEdit_nav_direction.setReadOnly(True)
 
         self.gridLayout_3.addWidget(self.lineEdit_nav_direction, 0, 5, 1, 1)
 
-        self.lineEdit_date = QLineEdit(self.groupBox_2)
+        self.lineEdit_date = QLineEdit(self.groupBox_4)
         self.lineEdit_date.setObjectName(u"lineEdit_date")
         self.lineEdit_date.setReadOnly(True)
 
         self.gridLayout_3.addWidget(self.lineEdit_date, 0, 1, 1, 1)
 
-        self.label_7 = QLabel(self.groupBox_2)
+        self.label_7 = QLabel(self.groupBox_4)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_7, 0, 2, 1, 1)
 
-        self.label_6 = QLabel(self.groupBox_2)
+        self.label_6 = QLabel(self.groupBox_4)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_6, 1, 2, 1, 1)
 
-        self.lineEdit_x = QLineEdit(self.groupBox_2)
+        self.lineEdit_x = QLineEdit(self.groupBox_4)
         self.lineEdit_x.setObjectName(u"lineEdit_x")
 
         self.gridLayout_3.addWidget(self.lineEdit_x, 1, 1, 1, 1)
 
-        self.label_4 = QLabel(self.groupBox_2)
+        self.label_4 = QLabel(self.groupBox_4)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_4, 0, 4, 1, 1)
 
-        self.label_8 = QLabel(self.groupBox_2)
+        self.label_8 = QLabel(self.groupBox_4)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_8, 1, 4, 1, 1)
 
-        self.lineEdit_time = QLineEdit(self.groupBox_2)
+        self.lineEdit_time = QLineEdit(self.groupBox_4)
         self.lineEdit_time.setObjectName(u"lineEdit_time")
         self.lineEdit_time.setReadOnly(True)
 
         self.gridLayout_3.addWidget(self.lineEdit_time, 0, 3, 1, 1)
 
-        self.lineEdit_z = QLineEdit(self.groupBox_2)
+        self.lineEdit_z = QLineEdit(self.groupBox_4)
         self.lineEdit_z.setObjectName(u"lineEdit_z")
 
         self.gridLayout_3.addWidget(self.lineEdit_z, 1, 5, 1, 1)
 
-        self.label_9 = QLabel(self.groupBox_2)
+        self.label_9 = QLabel(self.groupBox_4)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_9, 2, 0, 1, 1)
 
-        self.label_10 = QLabel(self.groupBox_2)
+        self.label_10 = QLabel(self.groupBox_4)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_10, 2, 2, 1, 1)
 
-        self.label_11 = QLabel(self.groupBox_2)
+        self.label_11 = QLabel(self.groupBox_4)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.label_11, 2, 4, 1, 1)
 
-        self.lineEdit_picth = QLineEdit(self.groupBox_2)
+        self.lineEdit_picth = QLineEdit(self.groupBox_4)
         self.lineEdit_picth.setObjectName(u"lineEdit_picth")
 
         self.gridLayout_3.addWidget(self.lineEdit_picth, 2, 1, 1, 1)
 
-        self.lineEdit_roll = QLineEdit(self.groupBox_2)
+        self.lineEdit_roll = QLineEdit(self.groupBox_4)
         self.lineEdit_roll.setObjectName(u"lineEdit_roll")
 
         self.gridLayout_3.addWidget(self.lineEdit_roll, 2, 3, 1, 1)
 
-        self.lineEdit_yaw = QLineEdit(self.groupBox_2)
+        self.lineEdit_yaw = QLineEdit(self.groupBox_4)
         self.lineEdit_yaw.setObjectName(u"lineEdit_yaw")
 
         self.gridLayout_3.addWidget(self.lineEdit_yaw, 2, 5, 1, 1)
 
-        self.gridLayout_3.setColumnStretch(0, 1)
+        self.gridLayout_3.setColumnStretch(0, 2)
         self.gridLayout_3.setColumnStretch(1, 3)
         self.gridLayout_3.setColumnStretch(2, 3)
         self.gridLayout_3.setColumnStretch(3, 3)
         self.gridLayout_3.setColumnStretch(4, 3)
         self.gridLayout_3.setColumnStretch(5, 3)
 
-        self.verticalLayout.addLayout(self.gridLayout_3)
+        self.verticalLayout_4.addLayout(self.gridLayout_3)
+
+
+        self.verticalLayout.addWidget(self.groupBox_4)
+
+        self.groupBox_3 = QGroupBox(self.groupBox_2)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.groupBox_3.setFont(font2)
+        self.groupBox_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.verticalLayout_3 = QVBoxLayout(self.groupBox_3)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.gridLayout_4 = QGridLayout()
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.lineEdit_date_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_date_2.setObjectName(u"lineEdit_date_2")
+        self.lineEdit_date_2.setReadOnly(True)
+
+        self.gridLayout_4.addWidget(self.lineEdit_date_2, 1, 1, 1, 1)
+
+        self.lineEdit_picth_3 = QLineEdit(self.groupBox_3)
+        self.lineEdit_picth_3.setObjectName(u"lineEdit_picth_3")
+
+        self.gridLayout_4.addWidget(self.lineEdit_picth_3, 4, 1, 1, 1)
+
+        self.label_28 = QLabel(self.groupBox_3)
+        self.label_28.setObjectName(u"label_28")
+        self.label_28.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_28, 2, 4, 1, 1)
+
+        self.lineEdit_y_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_y_2.setObjectName(u"lineEdit_y_2")
+
+        self.gridLayout_4.addWidget(self.lineEdit_y_2, 2, 3, 1, 1)
+
+        self.lineEdit_time_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_time_2.setObjectName(u"lineEdit_time_2")
+        self.lineEdit_time_2.setReadOnly(True)
+
+        self.gridLayout_4.addWidget(self.lineEdit_time_2, 1, 3, 1, 1)
+
+        self.lineEdit_picth_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_picth_2.setObjectName(u"lineEdit_picth_2")
+
+        self.gridLayout_4.addWidget(self.lineEdit_picth_2, 3, 1, 1, 1)
+
+        self.label_25 = QLabel(self.groupBox_3)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_25, 1, 4, 1, 1)
+
+        self.lineEdit_roll_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_roll_2.setObjectName(u"lineEdit_roll_2")
+
+        self.gridLayout_4.addWidget(self.lineEdit_roll_2, 3, 3, 1, 1)
+
+        self.label_18 = QLabel(self.groupBox_3)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_18, 1, 2, 1, 1)
+
+        self.label_27 = QLabel(self.groupBox_3)
+        self.label_27.setObjectName(u"label_27")
+        self.label_27.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_27, 2, 2, 1, 1)
+
+        self.lineEdit_z_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_z_2.setObjectName(u"lineEdit_z_2")
+
+        self.gridLayout_4.addWidget(self.lineEdit_z_2, 2, 5, 1, 1)
+
+        self.label_26 = QLabel(self.groupBox_3)
+        self.label_26.setObjectName(u"label_26")
+        self.label_26.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_26, 2, 0, 1, 1)
+
+        self.label_30 = QLabel(self.groupBox_3)
+        self.label_30.setObjectName(u"label_30")
+        self.label_30.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_30, 4, 4, 1, 1)
+
+        self.lineEdit_picth_4 = QLineEdit(self.groupBox_3)
+        self.lineEdit_picth_4.setObjectName(u"lineEdit_picth_4")
+
+        self.gridLayout_4.addWidget(self.lineEdit_picth_4, 4, 3, 1, 1)
+
+        self.label_31 = QLabel(self.groupBox_3)
+        self.label_31.setObjectName(u"label_31")
+        self.label_31.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_31, 4, 2, 1, 1)
+
+        self.lineEdit_x_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_x_2.setObjectName(u"lineEdit_x_2")
+
+        self.gridLayout_4.addWidget(self.lineEdit_x_2, 2, 1, 1, 1)
+
+        self.label_17 = QLabel(self.groupBox_3)
+        self.label_17.setObjectName(u"label_17")
+        self.label_17.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_17, 3, 0, 1, 1)
+
+        self.label_29 = QLabel(self.groupBox_3)
+        self.label_29.setObjectName(u"label_29")
+        self.label_29.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_29, 4, 0, 1, 1)
+
+        self.label_32 = QLabel(self.groupBox_3)
+        self.label_32.setObjectName(u"label_32")
+        self.label_32.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_32, 3, 4, 1, 1)
+
+        self.lineEdit_yaw_2 = QLineEdit(self.groupBox_3)
+        self.lineEdit_yaw_2.setObjectName(u"lineEdit_yaw_2")
+
+        self.gridLayout_4.addWidget(self.lineEdit_yaw_2, 3, 5, 1, 1)
+
+        self.label_16 = QLabel(self.groupBox_3)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_16, 1, 0, 1, 1)
+
+        self.lineEdit_picth_5 = QLineEdit(self.groupBox_3)
+        self.lineEdit_picth_5.setObjectName(u"lineEdit_picth_5")
+
+        self.gridLayout_4.addWidget(self.lineEdit_picth_5, 4, 5, 1, 1)
+
+        self.label_19 = QLabel(self.groupBox_3)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_19, 3, 2, 1, 1)
+
+        self.lineEdit_z_3 = QLineEdit(self.groupBox_3)
+        self.lineEdit_z_3.setObjectName(u"lineEdit_z_3")
+
+        self.gridLayout_4.addWidget(self.lineEdit_z_3, 1, 5, 1, 1)
+
+        self.label_20 = QLabel(self.groupBox_3)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label_20, 0, 0, 1, 1)
+
+        self.comboBox_available_xtf_file_names_2 = QComboBox(self.groupBox_3)
+        self.comboBox_available_xtf_file_names_2.setObjectName(u"comboBox_available_xtf_file_names_2")
+
+        self.gridLayout_4.addWidget(self.comboBox_available_xtf_file_names_2, 0, 1, 1, 2)
+
+        self.gridLayout_4.setColumnStretch(0, 2)
+        self.gridLayout_4.setColumnStretch(1, 3)
+        self.gridLayout_4.setColumnStretch(2, 3)
+        self.gridLayout_4.setColumnStretch(3, 3)
+        self.gridLayout_4.setColumnStretch(4, 3)
+        self.gridLayout_4.setColumnStretch(5, 3)
+
+        self.verticalLayout_3.addLayout(self.gridLayout_4)
+
+
+        self.verticalLayout.addWidget(self.groupBox_3)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -396,16 +573,31 @@ class Ui_Form(object):
         self.groupBox_2.setTitle(QCoreApplication.translate("Form", u"Step 2. \u8bfb/\u5199hvf\u6570\u636e", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"\u76ee\u6807xtf\u6587\u4ef6\uff1a", None))
         self.pushButton_start_read_hvf_file_according_to_xtf_file_list.setText(QCoreApplication.translate("Form", u"\u5f00\u59cb\u8bfb\u5165", None))
-        self.label.setText(QCoreApplication.translate("Form", u"date", None))
-        self.label_5.setText(QCoreApplication.translate("Form", u"X(m)", None))
+        self.groupBox_4.setTitle(QCoreApplication.translate("Form", u"Transducer", None))
+        self.label.setText(QCoreApplication.translate("Form", u"date:", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"X(m):", None))
         self.lineEdit_nav_direction.setText(QCoreApplication.translate("Form", u"NA", None))
-        self.label_7.setText(QCoreApplication.translate("Form", u"time", None))
-        self.label_6.setText(QCoreApplication.translate("Form", u"Y(m)", None))
-        self.label_4.setText(QCoreApplication.translate("Form", u"\u822a\u5411\uff1a", None))
-        self.label_8.setText(QCoreApplication.translate("Form", u"Z(m)", None))
-        self.label_9.setText(QCoreApplication.translate("Form", u"Pitch", None))
-        self.label_10.setText(QCoreApplication.translate("Form", u"Roll", None))
-        self.label_11.setText(QCoreApplication.translate("Form", u"Yaw", None))
+        self.label_7.setText(QCoreApplication.translate("Form", u"time:", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"Y(m):", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"\u822a\u5411:", None))
+        self.label_8.setText(QCoreApplication.translate("Form", u"Z(m):", None))
+        self.label_9.setText(QCoreApplication.translate("Form", u"Pitch:", None))
+        self.label_10.setText(QCoreApplication.translate("Form", u"Roll:", None))
+        self.label_11.setText(QCoreApplication.translate("Form", u"Yaw:", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("Form", u"SVP", None))
+        self.label_28.setText(QCoreApplication.translate("Form", u"Yaw:", None))
+        self.label_25.setText(QCoreApplication.translate("Form", u"Z(m):", None))
+        self.label_18.setText(QCoreApplication.translate("Form", u"Y(m):", None))
+        self.label_27.setText(QCoreApplication.translate("Form", u"Roll:", None))
+        self.label_26.setText(QCoreApplication.translate("Form", u"Pitch:", None))
+        self.label_30.setText(QCoreApplication.translate("Form", u"Yaw2:", None))
+        self.label_31.setText(QCoreApplication.translate("Form", u"Roll2:", None))
+        self.label_17.setText(QCoreApplication.translate("Form", u"X2(m):", None))
+        self.label_29.setText(QCoreApplication.translate("Form", u"Pitch2:", None))
+        self.label_32.setText(QCoreApplication.translate("Form", u"Z2(m):", None))
+        self.label_16.setText(QCoreApplication.translate("Form", u"X(m):", None))
+        self.label_19.setText(QCoreApplication.translate("Form", u"Y2(m):", None))
+        self.label_20.setText(QCoreApplication.translate("Form", u"DuleHead:", None))
         self.pushButton_save_to_df.setText(QCoreApplication.translate("Form", u"\u5b58\u5165\u6570\u636e\u5e93", None))
         self.pushButton_write_back_to_hvf.setText(QCoreApplication.translate("Form", u"\u5df2\u7ecf\u6539\u597d\uff0c\u6570\u636e\u5e93\u540c\u6b65\u5230hvf\u6587\u4ef6\u4e2d", None))
     # retranslateUi
