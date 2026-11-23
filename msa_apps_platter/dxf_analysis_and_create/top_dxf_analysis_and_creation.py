@@ -109,27 +109,27 @@ class SubWindowDxfRW(QWidget, Ui_Form):
                         point_nu += 1
                     lines.append("\n")
                     line_nu += 1
-            f = open(self.lineEdit_output_path_gp1.text() + '/' + file_name + '.txt', "w")
+            f = open(self.lineEdit_output_path_gp1.text() + '/' + file_name + '__report.txt', "w")
             f.writelines(lines)
             f.close()
             QMessageBox.information(
                 None,
                 "提取完成",
-                f"提取完成！\n一共提取到 {line_nu - 1} 条独立折线\n统计报告已经存储在" + self.output_path_gp1 + file_name + '.txt中.')
+                f"提取完成！\n一共提取到 {line_nu - 1} 条独立折线\n统计报告已经存储在" + self.output_path_gp1 +'/'+ file_name + '.txt中.')
         else:
             for idx, item in enumerate(polyline_list, start=1):
                 if item["layer"] == self.lineEdit_target_layer_gp1.text():
                     pts = item["points"]
                     for i, (x, y, z) in enumerate(pts):
-                        point_set.append([line_nu, point_nu, x, y, z])
+                        point_set.append([line_nu, point_nu, self.lineEdit_target_layer_gp1.text() + str(point_nu), x, y, z])
                         point_nu += 1
                     line_nu += 1
-            df_points = pd.DataFrame(point_set, columns=["line_num", "point_num", "X", "Y", "Z"])
+            df_points = pd.DataFrame(point_set, columns=["line_num", "point_num", "marker", "X", "Y", "Z"])
             # if self.comboBox_remove_duplication_gp2 == "是":
             #     df_points = df_points.drop_duplicates(subset=['X', 'Y'])
             print(df_points)
 
-            df_points.to_csv(self.lineEdit_output_path_gp1.text() + "/dxf_points_report.csv", columns=["X", "Y"])
+            df_points.to_csv(self.lineEdit_output_path_gp1.text() + '/' + file_name + ".csv", columns=["marker", "X", "Y"])
 
             QMessageBox.information(
                 None,
@@ -150,11 +150,12 @@ class SubWindowDxfRW(QWidget, Ui_Form):
             self.lineEdit_output_path_gp2.setText(self.output_path_gp2)
 
     def start_output_gp2(self):
+        file_name = self.lineEdit_csv_path_gp2.text().split('/')[-1].split('\\')[-1].split('.')[0]
         input_path = self.lineEdit_csv_path_gp2.text()
-        target_path = self.lineEdit_output_path_gp2.text() + '/output.dxf'
+        target_path = self.lineEdit_output_path_gp2.text() + '/' + file_name + '.dxf'
 
         df_points = pd.read_csv(input_path, header=None)
-        df_points.columns = ['ind', 'X', 'Y']
+        df_points.columns = ['ind', 'marker', 'X', 'Y']
         if self.comboBox_remove_duplication_gp2 == "是":
             df_points = df_points.drop_duplicates(subset=['X', 'Y'])
         point_list = df_points.values.tolist()
@@ -168,11 +169,11 @@ class SubWindowDxfRW(QWidget, Ui_Form):
         target_layer = self.lineEdit_target_layer_gp2.text()
         doc.layers.add(target_layer, color=1)
 
-        for idx, x, y in point_list:
+        for idx, marker, x, y in point_list:
             x_value = round(float(x),3)
             y_value = round(float(y),3)
             msp.add_point((x_value, y_value), dxfattribs={"layer": target_layer})
-            msp.add_text(str(int(idx)), dxfattribs={"height": 2, "layer": target_layer}).set_placement((x_value + 1, y_value + 1))
+            msp.add_text(marker, dxfattribs={"height": 2, "layer": target_layer}).set_placement((x_value + 1, y_value + 1))
 
         doc.saveas(target_path)
         QMessageBox.information(
