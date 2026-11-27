@@ -109,13 +109,13 @@ class SubWindowDxfRW(QWidget, Ui_Form):
                         point_nu += 1
                     lines.append("\n")
                     line_nu += 1
-            f = open(self.lineEdit_output_path_gp1.text() + '/' + file_name + '__report.txt', "w")
+            f = open(self.lineEdit_output_path_gp1.text() + '/' + file_name + self.lineEdit_target_layer_gp1.text() + '__report.txt', "w")
             f.writelines(lines)
             f.close()
             QMessageBox.information(
                 None,
                 "提取完成",
-                f"提取完成！\n一共提取到 {line_nu - 1} 条独立折线\n统计报告已经存储在" + self.output_path_gp1 +'/'+ file_name + '.txt中.')
+                f"提取完成！\n一共提取到 {line_nu - 1} 条独立折线\n统计报告已经存储在" + self.output_path_gp1 +'/' + file_name + self.lineEdit_target_layer_gp1.text() + '.txt中.')
         else:
             for idx, item in enumerate(polyline_list, start=1):
                 if item["layer"] == self.lineEdit_target_layer_gp1.text():
@@ -129,12 +129,12 @@ class SubWindowDxfRW(QWidget, Ui_Form):
             #     df_points = df_points.drop_duplicates(subset=['X', 'Y'])
             print(df_points)
 
-            df_points.to_csv(self.lineEdit_output_path_gp1.text() + '/' + file_name + ".csv", columns=["marker", "X", "Y"])
+            df_points.to_csv(self.lineEdit_output_path_gp1.text() + '/' + file_name + self.lineEdit_target_layer_gp1.text() + ".csv", columns=["marker", "X", "Y"])
 
             QMessageBox.information(
                 None,
                 "提取完成",
-                f"转换完成！\n一共提取到 {line_nu - 1} 条独立折线\n结果已经存储到" + self.output_path_gp1 + '/' + file_name + '.csv中')
+                f"转换完成！\n一共提取到 {line_nu - 1} 条独立折线\n结果已经存储到" + self.output_path_gp1 + '/' + self.lineEdit_target_layer_gp1.text() + file_name + '.csv中')
 
 
     def browser_to_csv_gp2(self):
